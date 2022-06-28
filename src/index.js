@@ -6,7 +6,6 @@ import './css/styles.css';
 $(document).ready(function() {
   $('#go').click(function(event) {
     event.preventDefault();
-    console.log("hello");
     const search = $('#search').val();
 
     let request = new XMLHttpRequest();
@@ -52,13 +51,13 @@ $(document).ready(function() {
     request.send();
 
     function showImage(response) {
-      $('.output').html(`<img src="${response.data.images.original.url}" />`);
+      $('.output').html(`<img class="m-3 rounded mx-auto my-auto d-block" src="${response.data.images.original.url}" />`);
     }
   });
 
     function robustShowImage(response) {
     let outputString = "";
-    response.data.forEach(element => outputString += `<img src="${element.images.downsized_medium.url}" />`);
+    response.data.forEach(element => outputString += `<img class="m-3 img-fluid rounded mx-auto d-block col-sm-6" src="${element.images.downsized_medium.url}" />`);
     $('.output').html(outputString);
   }
 });
